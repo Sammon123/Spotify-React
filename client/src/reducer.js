@@ -2,6 +2,7 @@ export const initialState = {
 	user: null,
 	token:
 		'BQDWXm8n19RpU72JNUoxgSCdQO02Vy2sesPimCwpjpCDLVHeDhhtPhthLm2WuuG_LviIleiGilOGDXCnu77XlbFCf6fMZ0YRMtB9-cd6_hvSNi-6SiubtkBdFW61rxAFxuZx5saSdFxEVykmvcfJLXWAQvJhtd7K',
+	playlists: [],
 };
 
 export const reducer = (state, action) => {
@@ -16,6 +17,11 @@ export const reducer = (state, action) => {
 			return {
 				...state,
 				token: action.token,
+			};
+		case 'SET_PLAYLISTS':
+			return {
+				...state,
+				playlists: action.playlists,
 			};
 		default:
 			return state;
