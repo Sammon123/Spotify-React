@@ -15,7 +15,7 @@ export const reducer = (state, action) => {
 		case 'SET_TOKEN':
 			return {
 				...state,
-				_token: action.token,
+				token: action.token,
 			};
 		default:
 			return state;
