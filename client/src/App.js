@@ -8,7 +8,7 @@ import Spotify from './components/Spotify/Spotify';
 const spotify = new SpotifyWebApi();
 
 function App() {
-	const [{ token, user }, dispatch] = useStateValue();
+	const [{ token }, dispatch] = useStateValue();
 	useEffect(() => {
 		const hash = getTokenFromUrl();
 		window.location.hash = '';
@@ -28,7 +28,12 @@ function App() {
 			});
 		});
 	}, [token, dispatch]);
-	return <div className='App'>{token ? <Spotify /> : <Login />}</div>;
+	return (
+		<div className='App'>
+			{!token && <Login />}
+			{token && <Spotify spotify={spotify} />}
+		</div>
+	);
 }
 
 export default App;
