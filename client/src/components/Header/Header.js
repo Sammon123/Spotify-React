@@ -2,6 +2,7 @@ import React from 'react';
 import { Avatar } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { useStateValue } from '../../StateProvider';
+import './Header.css';
 
 const Header = () => {
 	const [{ user }] = useStateValue();
