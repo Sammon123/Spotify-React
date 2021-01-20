@@ -41,6 +41,18 @@ function App() {
 					playlists,
 				});
 			});
+
+			spotify.getMyTopArtists().then((response) => {
+				dispatch({
+					type: 'SET_TOP_ARTISTS',
+					top_artists: response,
+				});
+			});
+
+			dispatch({
+				type: 'SET_SPOTIFY',
+				spotify: spotify,
+			});
 		}
 	}, [token, dispatch]);
 	return (
