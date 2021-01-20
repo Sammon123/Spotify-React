@@ -29,6 +29,22 @@ const Footer = ({ spotify }) => {
 			});
 		});
 	}, [spotify, dispatch]);
+
+	const handlePlayPause = () => {
+		if (playing) {
+			spotify.pause();
+			dispatch({
+				type: 'SET_PLAYING',
+				playing: false,
+			});
+		} else {
+			spotify.play();
+			dispatch({
+				type: 'SET_PLAYING',
+				playing: true,
+			});
+		}
+	};
 	return (
 		<div className='footer'>
 			<div className='footer-left'>
@@ -54,7 +70,19 @@ const Footer = ({ spotify }) => {
 			<div className='footer-center'>
 				<ShuffleIcon className='footer-green' />
 				<SkipPreviousIcon className='footer-icon' />
-				<PlayCircleOutlineIcon className='footer-icon' fontSize='large' />
+				{playing ? (
+					<PauseCircleOutlineIcon
+						onClick={handlePlayPause}
+						className='footer-icon'
+						fontSize='large'
+					/>
+				) : (
+					<PlayCircleOutlineIcon
+						onClick={handlePlayPause}
+						className='footer-icon'
+						fontSize='large'
+					/>
+				)}
 				<SkipNextIcon className='footer-icon' />
 				<RepeatIcon className='footer-green' />
 			</div>
