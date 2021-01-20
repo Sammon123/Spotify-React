@@ -59,6 +59,19 @@ const Footer = ({ spotify }) => {
 			});
 		});
 	};
+	const skipPrevious = () => {
+		spotify.skipToPrevious();
+		spotify.getMyCurrentPlayingTrack().then((res) => {
+			dispatch({
+				type: 'SET_ITEM',
+				item: res.item,
+			});
+			dispatch({
+				type: 'SET_PLAYING',
+				playing: true,
+			});
+		});
+	};
 	return (
 		<div className='footer'>
 			<div className='footer-left'>
@@ -83,7 +96,7 @@ const Footer = ({ spotify }) => {
 			</div>
 			<div className='footer-center'>
 				<ShuffleIcon className='footer-green' />
-				<SkipPreviousIcon className='footer-icon' />
+				<SkipPreviousIcon onClick={skipPrevious} className='footer-icon' />
 				{playing ? (
 					<PauseCircleOutlineIcon
 						onClick={handlePlayPause}

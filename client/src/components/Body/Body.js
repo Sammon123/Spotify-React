@@ -10,6 +10,25 @@ import './Body.css';
 
 const Body = ({ spotify }) => {
 	const [{ discover_weekly }, dispatch] = useStateValue();
+
+	const playPlaylist = (id) => {
+		spotify
+			.play({
+				context_uri: `spotify:playlist:37i9dQZEVXcOLRfAqi2lGS`,
+			})
+			.then((res) => {
+				spotify.getMyCurrentPlayingTrack().then((res) => {
+					dispatch({
+						type: 'SET_ITEM',
+						item: res,
+					});
+					dispatch({
+						type: 'SET_ITEM',
+						playing: true,
+					});
+				});
+			});
+	};
 	return (
 		<div className='body'>
 			<Header spotify={spotify} />
@@ -23,7 +42,10 @@ const Body = ({ spotify }) => {
 			</div>
 			<div className='body-songs'>
 				<div className='body-icon'>
-					<PlayCircleFilledIcon className='body-shuffle' />
+					<PlayCircleFilledIcon
+						className='body-shuffle'
+						onClick={playPlaylist}
+					/>
 					<FavoriteIcon fontSize='large' />
 					<MoreHorizIcon />
 				</div>
