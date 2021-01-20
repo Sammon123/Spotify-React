@@ -5,6 +5,8 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import './Body.css';
 import { useStateValue } from '../../StateProvider';
 import Header from '../Header/Header';
+import SongRow from '../SongRow/SongRow';
+import './Body.css';
 
 const Body = ({ spotify }) => {
 	const [{ discover_weekly }, dispatch] = useStateValue();
@@ -30,6 +32,9 @@ const Body = ({ spotify }) => {
 					<FavoriteIcon fontSize='large' />
 					<MoreHorizIcon />
 				</div>
+				{discover_weekly?.tracks.items.map((item) => (
+					<SongRow track={item.track} />
+				))}
 			</div>
 		</div>
 	);
