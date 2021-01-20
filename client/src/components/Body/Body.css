@@ -16,7 +16,6 @@
 	align-items: flex-end;
 	padding: 10px;
 }
-
 .body-infoText {
 	flex: 1;
 }
@@ -44,7 +43,8 @@
 .body-shuffle {
 	font-size: 80px !important;
 	margin-left: 50px;
-	margin: 20px 0;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .body-shuffle:hover {

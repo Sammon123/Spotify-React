@@ -18,12 +18,7 @@ const Body = ({ spotify }) => {
 				<div className='body-infoText'>
 					<strong>PLAYLIST</strong>
 					<h2>Discover Weekly</h2>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-						consequuntur dolores libero, reiciendis eveniet explicabo fuga alias
-						voluptate odio quibusdam animi, odit amet minus iure perferendis,
-						enim laborum facere reprehenderit.
-					</p>
+					<p>{discover_weekly?.description}</p>
 				</div>
 			</div>
 			<div className='body-songs'>
