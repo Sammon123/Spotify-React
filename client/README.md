@@ -17,6 +17,10 @@
 
 [![Spotify React Demonstration](src/spotify.png)](https://drive.google.com/file/d/1A874Mss6qd5quaQEMNBxW03vSDrtPTVB/view 'Spotify React')
 
+## Future Development
+
+<p>Using react-dom to go to different playlists. Have a ways to authenticate logout functionality. Also using the search bar on top to be able to filter the tracks by title.</p>
+
 ## Developer
 
 Peter Sammon
