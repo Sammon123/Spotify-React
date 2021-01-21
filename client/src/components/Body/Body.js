@@ -20,10 +20,30 @@ const Body = ({ spotify }) => {
 				spotify.getMyCurrentPlayingTrack().then((res) => {
 					dispatch({
 						type: 'SET_ITEM',
-						item: res,
+						item: res.item,
 					});
 					dispatch({
+						type: 'SET_PLAYING',
+						playing: true,
+					});
+				});
+			});
+	};
+
+	const playSong = (id) => {
+		spotify
+			.play({
+				uris: [`spotify:track:${id}`],
+			})
+			.then((res) => {
+				console.log(res);
+				spotify.getMyCurrentPlayingTrack().then((r) => {
+					dispatch({
 						type: 'SET_ITEM',
+						item: r.item,
+					});
+					dispatch({
+						type: 'SET_PLAYING',
 						playing: true,
 					});
 				});
@@ -33,7 +53,7 @@ const Body = ({ spotify }) => {
 		<div className='body'>
 			<Header spotify={spotify} />
 			<div className='body-info'>
-				<img src='' alt='' />
+				<img src={discover_weekly?.images[0]?.url} alt='' />
 				<div className='body-infoText'>
 					<strong>PLAYLIST</strong>
 					<h2>Discover Weekly</h2>
@@ -49,8 +69,9 @@ const Body = ({ spotify }) => {
 					<FavoriteIcon fontSize='large' />
 					<MoreHorizIcon />
 				</div>
-				{discover_weekly?.tracks.items.map((item) => (
-					<SongRow track={item.track} />
+				{/* list of songs */}
+				{discover_weekly?.tracks?.items?.map((item) => (
+					<SongRow playSong={playSong} track={item.track} />
 				))}
 			</div>
 		</div>

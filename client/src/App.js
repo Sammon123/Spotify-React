@@ -14,31 +14,17 @@ function App() {
 		window.location.hash = '';
 		let _token = hash.access_token;
 		if (_token) {
+			spotify.setAccessToken(_token);
+
 			dispatch({
 				type: 'SET_TOKEN',
 				token: _token,
-			});
-			spotify.setAccessToken(_token);
-
-			spotify.getMe().then((user) => {
-				console.log(user);
-				dispatch({
-					type: 'SET_USER',
-					user: user,
-				});
 			});
 
 			spotify.getPlaylist('37i9dQZEVXcOLRfAqi2lGS').then((response) => {
 				dispatch({
 					type: 'SET_DISCOVER_WEEKLY',
 					discover_weekly: response,
-				});
-			});
-
-			spotify.getUserPlaylists().then((playlists) => {
-				dispatch({
-					type: 'SET_PLAYLISTS',
-					playlists,
 				});
 			});
 
@@ -52,6 +38,21 @@ function App() {
 			dispatch({
 				type: 'SET_SPOTIFY',
 				spotify: spotify,
+			});
+
+			spotify.getMe().then((user) => {
+				console.log(user);
+				dispatch({
+					type: 'SET_USER',
+					user: user,
+				});
+			});
+
+			spotify.getUserPlaylists().then((playlists) => {
+				dispatch({
+					type: 'SET_PLAYLISTS',
+					playlists,
+				});
 			});
 		}
 	}, [token, dispatch]);

@@ -6,7 +6,7 @@ import SidebarOption from '../SidebarOption/SidebarOption';
 import { useStateValue } from '../../StateProvider';
 import './Sidebar.css';
 
-const Sidebar = ({}) => {
+const Sidebar = () => {
 	const [{ playlists }] = useStateValue();
 	return (
 		<div className='sidebar'>
